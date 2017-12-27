@@ -1,0 +1,327 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 27.12.2017, 21:11:10
+    Author     : NoSkilz
+*/
+/* variables start */
+@fb_color: #3b5998;
+@black: #000;
+@white: #fff;
+@green: #4CAF50;
+/* variables end */
+
+/* header start */
+#header
+{
+    z-index: 100;
+    width: 100%;
+    background-color: @black;
+    color: @white;
+}
+.not_sticky
+{
+    position: static;
+}
+.sticky
+{
+    position: fixed;
+    top: 0;
+}
+/* header end */
+
+/* fb start */
+#fb_stuff
+{
+    background-color: @fb_color;
+}
+/* fb end */
+
+/* random stuff start */
+#random_stuff
+{
+    width: 1100px;
+    margin: 0 auto;
+    background-color: @black;
+}
+#button1 
+{
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: @white;
+    background-color: @green;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 5px #999;
+    &:hover
+    {
+        background-color: darken(@green,10%);
+    }
+    &:active
+    {
+        background-color: darken(@green,10%);
+        box-shadow: 0 2px #666;
+        transform: translateY(3px);
+    }
+}
+#button2 
+{
+    border-radius: 4px;
+    background-color: #f4511e;
+    border: none;
+    color: @white;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition:  0.5s;
+    cursor: pointer;
+    margin: 5px;
+    span
+    {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+        &:after
+        {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+    }
+    &:hover span
+    {
+        padding-right: 25px;
+    }
+    &:hover span:after
+    {
+        opacity: 1;
+        right: 0;
+    }
+}
+#slideshow-container
+{
+    position: relative;
+    clear: both;
+    overflow: hidden;
+    height: 800px;
+    .slides
+    {
+        position: absolute;
+        width: 100%;
+        .text 
+        {
+            color: darken(@white,10%);
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+        .numbertext 
+        {
+            color: darken(@white,10%);
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+        }
+        img
+        {
+            width: 100%;
+            height: 800px;
+        }
+    }
+}
+.prev, .next 
+{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    &:hover
+    {
+        background-color: rgba(0,0,0,0.8);
+    }
+}
+.next 
+{
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev
+{
+    border-radius: 0 3px 3px 0;
+}
+.dot 
+{
+    cursor:pointer;
+    height: 13px;
+    width: 13px;
+    margin: 0 2px;
+    background-color: @white;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    &:hover
+    {
+        background-color: darken(@white,40%);
+    }
+}
+.active:extend(.dot:hover){}
+.fade 
+{
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+img
+{
+    height: 800px;
+}
+#modal 
+{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+    .close
+    {
+        color: @white;
+        position: absolute;
+        top: 10px;
+        right: 25px;
+        font-size: 35px;
+        font-weight: bold;
+        &:hover,&:focus
+        {
+            color: darken(@white,40%);
+            text-decoration: none;
+            cursor: pointer;
+        }    
+    }
+    .modal-content 
+    {
+        position: relative;
+        background-color: @black;
+        margin: auto;
+        padding: 0;
+        width: 90%;
+        max-width: 1200px;
+        .slidess
+        {
+            background-color: @black;
+        }
+    }
+}
+#timeline
+{
+    text-align: center;
+    position: relative;
+    &:after
+    {
+        content: '';
+        position: absolute;
+        width: 6px;
+        background-color: white;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -3px;
+    }
+    .container
+    {
+        padding: 10px 45px;
+        position: relative;
+        background-color: inherit;
+        width: 50%;
+        box-sizing: border-box;
+        &:after
+        {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #FF9F55;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+    }
+    .left
+    {
+        left: 0;
+        &:before
+        {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 35px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+    }
+    .right
+    {
+        left: 50%;
+        &:before
+        {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 35px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        &:after
+        {
+            left: -16px;
+        }    
+    }
+    .content
+    {
+        padding: 20px 30px;
+        background-color: white;
+        position: relative;
+        border-radius: 6px;
+    }
+}
+/* random stuff end */
+
+/* keyframes start */
+@keyframes fade 
+{
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+/* keyframes end */
